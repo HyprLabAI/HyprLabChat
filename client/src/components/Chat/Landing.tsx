@@ -22,7 +22,7 @@ export default function Landing({ Header }: { Header?: ReactNode }) {
       <div className="flex h-full flex-col items-center justify-center">
         <div className="mb-3 h-[72px] w-[72px]">
           <div className="gizmo-shadow-stroke relative flex h-full items-center justify-center rounded-full bg-white text-black">
-            <img src="/assets/hyprlab_logo.png" alt="HyprLab Logo" />
+            <img src="/assets/hyprlab_icon.png" alt="HyprLab Logo" />
           </div>
         </div>
         <div className="mb-5 text-2xl font-medium dark:text-white">
