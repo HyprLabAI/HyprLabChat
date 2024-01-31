@@ -1,7 +1,9 @@
 const request = require('supertest');
 const express = require('express');
 const routes = require('../');
+// file deepcode ignore UseCsurfForExpress/test: test
 const app = express();
+app.disable('x-powered-by');
 app.use('/api/config', routes.config);
 
 afterEach(() => {
@@ -62,6 +64,7 @@ describe.skip('GET /', () => {
       githubLoginEnabled: true,
       discordLoginEnabled: true,
       serverDomain: 'http://test-server.com',
+      emailLoginEnabled: 'true',
       registrationEnabled: 'true',
       socialLoginEnabled: 'true',
     });

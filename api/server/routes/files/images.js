@@ -1,8 +1,10 @@
 const { z } = require('zod');
+const path = require('path');
 const fs = require('fs').promises;
 const express = require('express');
 const upload = require('./multer');
-const { localStrategy } = require('~/server/services/Files');
+const { processImageUpload } = require('~/server/services/Files/process');
+const { logger } = require('~/config');
 
 const router = express.Router();
 
@@ -33,13 +35,19 @@ router.post('/', upload.single('file'), async (req, res) => {
     uuidSchema.parse(metadata.file_id);
     metadata.temp_file_id = metadata.file_id;
     metadata.file_id = req.file_id;
-    await localStrategy({ req, res, file, metadata });
+
+    await processImageUpload({ req, res, file, metadata });
   } catch (error) {
-    console.error('Error processing file:', error);
+    logger.error('[/files/images] Error processing file:', error);
     try {
-      await fs.unlink(file.path);
+      const filepath = path.join(
+        req.app.locals.paths.imageOutput,
+        req.user.id,
+        path.basename(file.filename),
+      );
+      await fs.unlink(filepath);
     } catch (error) {
-      console.error('Error deleting file:', error);
+      logger.error('[/files/images] Error deleting file:', error);
     }
     res.status(500).json({ message: 'Error processing file' });
   }
@@ -49,7 +57,7 @@ router.post('/', upload.single('file'), async (req, res) => {
   //   try {
   //     // await fs.unlink(file.path);
   //   } catch (error) {
-  //     console.error('Error deleting file:', error);
+  //     logger.error('[/files/images] Error deleting file:', error);
 
   //   }
   // }

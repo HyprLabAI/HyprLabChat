@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil';
 import { Fragment, useState, memo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react';
-import { useGetUserBalance, useGetStartupConfig } from 'librechat-data-provider';
+import { useGetUserBalance, useGetStartupConfig } from 'librechat-data-provider/react-query';
 import type { TConversation } from 'librechat-data-provider';
 import { ExportModal } from './ExportConversation';
 import { LinkIcon, GearIcon } from '~/components';
@@ -113,13 +113,13 @@ function NavLinks() {
                     className="flex w-full cursor-pointer items-center gap-3 rounded-none px-3 py-3 text-sm text-white transition-colors duration-200 hover:bg-gray-700"
                     svg={() => <LinkIcon />}
                     text={localize('com_nav_help_faq')}
-                    clickHandler={() => window.open('https://docs.hyprlab.io', '_blank')}
+                    clickHandler={() => window.open('https://docs.librechat.ai/', '_blank')}
                   />
                 </Menu.Item>
                 <Menu.Item as="div">
                   <NavLink
                     className="flex w-full cursor-pointer items-center gap-3 rounded-none px-3 py-3 text-sm text-white transition-colors duration-200 hover:bg-gray-700"
-                    svg={() => <GearIcon />}
+                    svg={() => <GearIcon className="icon-md" />}
                     text={localize('com_nav_settings')}
                     clickHandler={() => setShowSettings(true)}
                   />

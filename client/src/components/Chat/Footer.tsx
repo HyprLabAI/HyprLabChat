@@ -1,4 +1,4 @@
-import { useGetStartupConfig } from 'librechat-data-provider';
+import { useGetStartupConfig } from 'librechat-data-provider/react-query';
 import { useLocalize } from '~/hooks';
 
 export default function Footer() {
@@ -11,7 +11,15 @@ export default function Footer() {
           config.customFooter
         ) : (
           <>
-          HyprLab Chat&nbsp;&nbsp; ─ &nbsp;&nbsp;Credits to <a href="https://github.com/danny-avila/LibreChat" target="_blank" rel="noreferrer" class="underline">@LibreChat</a>
+            <a
+              href="https://github.com/danny-avila/LibreChat"
+              target="_blank"
+              rel="noreferrer"
+              className="underline"
+            >
+              {config?.appTitle || 'LibreChat'} v0.6.6
+            </a>
+            {' - '} {localize('com_ui_new_footer')}
           </>
         )}
       </span>
