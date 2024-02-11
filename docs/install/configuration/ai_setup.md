@@ -410,6 +410,7 @@ To use Azure with the Plugins endpoint, make sure the following environment vari
 ## [OpenRouter](https://openrouter.ai/)
 
 **[OpenRouter](https://openrouter.ai/)** is a legitimate proxy service to a multitude of LLMs, both closed and open source, including:
+
 - OpenAI models (great if you are barred from their API for whatever reason)
 - Anthropic Claude models (same as above)
 - Meta's Llama models
@@ -422,18 +423,19 @@ OpenRouter is integrated to the LibreChat by overriding the OpenAI endpoint.
 
 **Important**: As of v0.6.6, you can use OpenRouter as its own standalone endpoint:
 
-![image](https://github.com/danny-avila/LibreChat/assets/110412045/4955bfa3-7b6b-4602-933f-daef89c9eab3)
-
 ### [Review the Custom Config Guide (click here)](./custom_config.md) to add an `OpenRouter` Endpoint
 
-**Setup (legacy):**
+![image](https://github.com/danny-avila/LibreChat/assets/110412045/4955bfa3-7b6b-4602-933f-daef89c9eab3)
+
+#### Setup (legacy):
+
 - Signup to **[OpenRouter](https://openrouter.ai/)** and create a key. You should name it and set a limit as well.
 - Set the environment variable `OPENROUTER_API_KEY` in your .env file to the key you just created.
 - Set something in the `OPENAI_API_KEY`, it can be anyting, but **do not** leave it blank or set to `user_provided`  
 - Restart your LibreChat server and use the OpenAI or Plugins endpoints.
 
-**Notes:**
-- [TODO] **In the future, you will be able to set up OpenRouter from the frontend as well.**
+#### Notes (legacy):
+
 - This will override the official OpenAI API or your reverse proxy settings for both Plugins and OpenAI.
 - On initial setup, you may need to refresh your page twice to see all their supported models populate automatically.
 - Plugins: Functions Agent works with OpenRouter when using OpenAI models.
@@ -445,6 +447,27 @@ OpenRouter is integrated to the LibreChat by overriding the OpenAI endpoint.
 ## Unofficial APIs
 
 **Important:** Stability for Unofficial APIs are not guaranteed. Access methods to these APIs are hacky, prone to errors, and patching, and are marked lowest in priority in LibreChat's development.
+
+### ChatGPTBrowser
+
+**Backend Access to https://chat.openai.com/api**
+
+This is not to be confused with [OpenAI's Official API](#openai)!
+
+> Note that this is disabled by default and requires additional configuration to work. 
+> Also, using this may have your data exposed to 3rd parties if using a proxy, and OpenAI may flag your account.
+> See: [ChatGPT Reverse Proxy](../../features/ninja.md)
+
+To get your Access token for ChatGPT Browser Access, you need to:
+
+- Go to **[https://chat.openai.com](https://chat.openai.com)**
+- Create an account or log in with your existing one
+- Visit **[https://chat.openai.com/api/auth/session](https://chat.openai.com/api/auth/session)**
+- Copy the value of the "accessToken" field and save it in ./.env as CHATGPT_ACCESS_TOKEN
+
+Warning: There may be a chance of your account being banned if you deploy the app to multiple users with this method. Use at your own risk.
+
+---
 
 ### BingAI
 I recommend using Microsoft Edge for this:
