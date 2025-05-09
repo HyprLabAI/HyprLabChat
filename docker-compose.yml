@@ -5,6 +5,7 @@ services:
       - "${PORT}:${PORT}"
     depends_on:
       - mongodb
+      - rag_api
     image: librechat
     build:
       context: .
@@ -29,7 +30,6 @@ services:
       - ./images:/app/client/public/images
       - ./uploads:/app/uploads
       - ./logs:/app/api/logs
-
   mongodb:
     container_name: chat-mongodb
     image: mongo
@@ -38,7 +38,6 @@ services:
     volumes:
       - ./data-node:/data/db
     command: mongod --noauth
-
   meilisearch:
     container_name: chat-meilisearch
     image: getmeili/meilisearch:v1.12.3

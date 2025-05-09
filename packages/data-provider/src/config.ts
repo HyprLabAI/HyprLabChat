@@ -499,7 +499,7 @@ export const intefaceSchema = z
     prompts: true,
     agents: true,
     temporaryChat: true,
-    runCode: true,
+    runCode: false,
   });
 
 export type TInterfaceConfig = z.infer<typeof intefaceSchema>;
