@@ -17,7 +17,7 @@ const initAnthropic = require('~/server/services/Endpoints/anthropic/initialize'
 const getBedrockOptions = require('~/server/services/Endpoints/bedrock/options');
 const initOpenAI = require('~/server/services/Endpoints/openAI/initialize');
 const initCustom = require('~/server/services/Endpoints/custom/initialize');
-// const initGoogle = require('~/server/services/Endpoints/google/initialize');
+const initGoogle = require('~/server/services/Endpoints/google/initialize');
 const generateArtifactsPrompt = require('~/app/clients/prompts/artifacts');
 const { getCustomEndpointConfig } = require('~/server/services/Config');
 const { processFiles } = require('~/server/services/Files/process');
@@ -36,7 +36,7 @@ const providerConfigMap = {
   [Providers.DEEPSEEK]: initCustom,
   [Providers.OPENROUTER]: initCustom,
   [EModelEndpoint.openAI]: initOpenAI,
-  // [EModelEndpoint.google]: initGoogle,
+  [EModelEndpoint.google]: initGoogle,
   [EModelEndpoint.azureOpenAI]: initOpenAI,
   [EModelEndpoint.anthropic]: initAnthropic,
   [EModelEndpoint.bedrock]: getBedrockOptions,
