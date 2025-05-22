@@ -735,6 +735,10 @@ const sharedOpenAIModels = [
 ];
 
 const sharedAnthropicModels = [
+  'claude-sonnet-4-20250514',
+  'claude-sonnet-4-latest',
+  'claude-opus-4-20250514',
+  'claude-opus-4-latest',
   'claude-3-7-sonnet-latest',
   'claude-3-7-sonnet-20250219',
   'claude-3-5-haiku-20241022',
@@ -907,6 +911,8 @@ export const visionModels = [
   'gpt-4o-mini-2024-07-18',
   'gpt-4-turbo',
   'gpt-4-turbo-2024-04-09',
+  'claude-opus-4-20250514',
+  'claude-sonnet-4-20250514',
   'claude-3-7-sonnet-latest',
   'claude-3-7-sonnet-20250219',
   'claude-3-5-sonnet-latest',
